@@ -31,7 +31,7 @@ LLM → MCP Router → Tool (Weather | Database) → One English sentence
 ## Folder Structure
 ```
 .
-├─ .env.example
+├─ .env (local)
 ├─ .gitignore
 ├─ package.json
 ├─ tsconfig.json
@@ -59,20 +59,17 @@ LLM → MCP Router → Tool (Weather | Database) → One English sentence
 ```
 
 ## Environment Variables
-Create `.env` from `.env.example`.
+Ensure a `.env` file exists with the following keys:
 
 - PORT=3000
 - GEMINI_API_KEY=AIza-...
 - GEMINI_MODEL=gemini-1.5-flash
 - MONGODB_URI=mongodb://localhost:27017/ai_routing_system
 
-See `.env.example` for sample values.
-
 ## Installation & Local Setup
 ```
 npm install
-cp .env.example .env
-# edit .env with your values
+# ensure .env is present and has valid values
 npm run dev
 ```
 MongoDB must be running and accessible through `MONGODB_URI`.

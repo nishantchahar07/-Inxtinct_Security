@@ -2,12 +2,13 @@
   "name": "ai-routing-system-mcp-router",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc -p .",
     "start": "node dist/index.js",
-    "seed": "ts-node-dev --transpile-only src/seed.ts"
+    "seed": "ts-node-dev --transpile-only src/seed.ts",
+    "test:api": "ts-node scripts/apiTest.ts"
   },
   "dependencies": {
     "axios": "^1.7.4",

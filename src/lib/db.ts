@@ -1,10 +1,26 @@
 import mongoose from 'mongoose';
 import { EmployeeModel } from '../types/mongooseModels';
+import { MONGODB_URI } from '../config/env';
 
 export async function connect() {
-  const uri = process.env.MONGODB_URI;
+  const uri = MONGODB_URI;
   if (!uri) throw new Error('MONGODB_URI is not set.');
-  await mongoose.connect(uri);
+
+  console.log('Connecting to MongoDB...');
+  try {
+    const conn = await mongoose.connect(uri, {
+      // Fail fast if the server is not reachable
+      serverSelectionTimeoutMS: 5000,
+    } as any);
+    if (conn.connections) {
+      console.log('Connected to MongoDB');
+    }
+  } catch (err: any) {
+    const reason = (err && err.message) ? err.message : 'Unknown error';
+    console.error('Failed to connect to MongoDB:', reason);
+    throw err;
+  }
+
   await seedIfEmpty();
 }
 

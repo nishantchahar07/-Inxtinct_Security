@@ -1,9 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
-import dotenv from 'dotenv';
 import { connect } from './lib/db';
 import queryRouter from './routes/queryRoute';
-
-dotenv.config();
+import { PORT } from './config/env';
 
 const app = express();
 app.use(express.json());
@@ -24,10 +22,9 @@ function sanitizeSentence(text: string): string {
   return text.replace(/\s+/g, ' ').trim();
 }
 
-const PORT = Number(process.env.PORT || 3000);
-
 connect().then(() => {
   app.listen(PORT);
+  console.log(`Server is running on port ${PORT}`);
 }).catch(() => {
   process.exit(1);
 });

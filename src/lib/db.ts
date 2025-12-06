@@ -9,7 +9,7 @@ export async function connect() {
   console.log('Connecting to MongoDB...');
   try {
     const conn = await mongoose.connect(uri, {
-      // Fail fast if the server is not reachable
+    
       serverSelectionTimeoutMS: 5000,
     } as any);
     if (conn.connections) {

@@ -67,7 +67,7 @@ export async function getRoutingInstructions(userMessage: string): Promise<strin
     const text = response.response.text();
     return text;
   } catch (_err) {
-    // Permanently disable LLM for this process after the first failure, then fallback silently
+
     llmDisabledPermanently = true;
     return fallbackRouting(userMessage);
   }

@@ -12,5 +12,6 @@ function getNumber(name: string, def?: number): number | undefined {
 
 export const PORT = getNumber('PORT', 3000) as number;
 export const GEMINI_API_KEY = process.env.GEMINI_API_KEY ?? '';
-export const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
+export const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-1.5-flash'; // Ensure this matches an available model for your key
+export const LOG_LLM_FALLBACK = process.env.LOG_LLM_FALLBACK === '1';
 export const MONGODB_URI = process.env.MONGODB_URI ?? '';
